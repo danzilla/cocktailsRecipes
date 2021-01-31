@@ -21,11 +21,12 @@ const CocktailsDetails = (props) => {
       <Card key={index} className="text-wrap p-2 m-2">
         <Card.Body>
           <Card.Title className="mb-2 text-muted">
-            <h5 className="p-1 m-0">Category: <small>{CockTail.strCategory}</small></h5>
-            <h5 className="p-1 m-0">Drink Type: <small>{CockTail.strAlcoholic}</small></h5>
-            <h5 className="p-1 m-0">Glass Type: <small>{CockTail.strGlass}</small></h5>
+            <h3> <b>{CockTail.strDrink}</b> </h3>
+            <h5 className="m-0">Category: <small>{CockTail.strCategory}</small></h5>
+            <h5 className="m-0">Drink Type: <small>{CockTail.strAlcoholic}</small></h5>
+            <h5 className="m-0">Glass Type: <small>{CockTail.strGlass}</small></h5>
             {CockTail.dateModified 
-              ? (<h5 className="p-1 m-0">Updated: <small>{CockTail.dateModified}</small></h5>)
+              ? (<h5 className="m-0">Updated: <small>{CockTail.dateModified}</small></h5>)
               : (null)
             }
           </Card.Title>
@@ -126,7 +127,7 @@ const CocktailsDetails = (props) => {
                     src={CockTail.strDrinkThumb}
                     alt={CockTail.strDrink} />
                   <Media.Body>
-                    <h3> {CockTail.strDrink} </h3>
+                    {/* <h3> {CockTail.strDrink} </h3> */}
                     <Media>
                       <Media.Body>
                         {CockTailCardData}
@@ -157,7 +158,7 @@ const CocktailsDetails = (props) => {
             <Col className="container">
               <Alert className="p-4 m-4 text-center w-100" variant="success">
                 <h2>
-                  Learn about Cocktails Recipes!
+                  Discover Cocktails Recipe!
                   <br />
                   <small>Click on any Ingrident ...</small>
                 </h2>
