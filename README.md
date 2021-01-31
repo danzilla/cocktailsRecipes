@@ -5,6 +5,8 @@
 - `npm start`
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## Live Project
+- Open [danzilla.github.io/cocktailsRecipes](https://danzilla.github.io/cocktailsRecipes/) to view it.
 #
 
 ## Create a cocktail recipe book!
