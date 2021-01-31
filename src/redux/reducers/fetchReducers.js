@@ -6,7 +6,7 @@ const initialState = {
   ingredientCocktails: {},
   cocktailsDetails: {},
 };
-
+// Fetch_Reducers
 const fetchReducers = (state = initialState, action) => {
   switch (action.type) {
 
@@ -50,6 +50,27 @@ const fetchReducers = (state = initialState, action) => {
         isFetching: false,
         isError: true
       });
+
+    // COCKTAIL_DETAILS
+    case "FETCHING_COCKTAIL_DETAILS":
+      return Object.assign({}, state, {
+        cocktailsDetails: action.data,
+        isFetching: true,
+        isError: false
+      });
+    case "FETCHED_COCKTAIL_DETAILS":
+      return Object.assign({}, state, {
+        cocktailsDetails: action.data,
+        isFetching: false,
+        isError: false
+      });
+    case "ERROR_COCKTAIL_DETAILS":
+      return Object.assign({}, state, {
+        cocktailsDetails: action.data,
+        isFetching: false,
+        isError: true
+      });
+
 
     // Default?
     default:

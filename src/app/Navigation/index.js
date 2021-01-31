@@ -8,12 +8,12 @@ import {
 } from "../../redux/actions/fetchAction";
 // Navigation - alcohol list
 const Navigation = (props) => {
-  // onClick
+  // onClick on Alcohol
   const handleClick = (e) => {
     console.log("this.props" + JSON.stringify(e.Alcohol));
     props.dispatch(thunk_action_fetch_ingredient_Details(e.Alcohol));
     props.dispatch(thunk_action_fetch_ingredient_Cocktails(e.Alcohol));
-    console.log(JSON.stringify(props));
+    // console.log(JSON.stringify(props));
   };
   // Choosen Alcohol list
   const Alcoholz = ["Whiskey", "Scotch", "Rum", "Tequila", "Brandy"]
