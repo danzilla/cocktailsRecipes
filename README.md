@@ -1,5 +1,12 @@
 # Chata Frontend Coding Challenge
 
+## Deply App
+- `npm install`
+- `npm start`
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+#
+
 ## Create a cocktail recipe book!
 
 Your goal for this challenge is to create a "recipe book" for cocktails based on their alcohol ingredient. The user should be able to browse different recipes based on their ingredient, and get more detailed information on the cocktail of their choosing.
