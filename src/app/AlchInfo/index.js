@@ -3,6 +3,15 @@ import { connect } from "react-redux";
 import { Row, Col, Alert, Accordion, Card, Badge } from 'react-bootstrap';
 // Alcohol ingredients Info
 const AlchoInfo = (props) => {
+  // Format Paragraph to Sentences 
+  let paragraph = ["Loadding.."];
+  if(!props.data.ingredientDetails.ingredients){
+    paragraph = ["Loadding..."];
+   // paragraph = props.data.ingredientDetails.ingredients[0].strDescription.match(/[^\s.!?]+[^.!?\r\n]+[.!?]*/g);
+  } else { 
+    paragraph = props.data.ingredientDetails.ingredients[0].strDescription.match(/([^.!?]+[.!?]"?)\s?/g);
+  }
+  // Return AlchoInfo
   return (
     <Row className="m-2">
       <Col>
@@ -19,7 +28,13 @@ const AlchoInfo = (props) => {
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
                     <Alert variant="primary">
-                      <p>{props.data.ingredientDetails.ingredients[0].strDescription}</p>
+                      {/* Break it Down */}
+                      {paragraph.map((sentances, index) => (
+                        <p className="m-0 p-0">{sentances}</p>
+                      ))}
+                      {/* 
+                        <p>{props.data.ingredientDetails.ingredients[0].strDescription}</p>
+                      */}
                     </Alert>
                   </Card.Body>
                 </Accordion.Collapse>

@@ -7,6 +7,7 @@ import AlchoInfo from "./AlchInfo";
 import CocktailsDetails from "./CocktailsDetails";
 // App
 const App = () => {
+
   return (
     <Container>
       <h2 className="p-2 m-2 font-weight-bold text-center"><i>Cocktails Recipes</i></h2>

@@ -103,7 +103,6 @@ const CocktailsDetails = (props) => {
       </Card>
     ))
   } else { CockTailCardData = "Loading..." }
-
   // CockTails Cards
   let CockTails = props.data.ingredientCocktails;
   let CockTailsCard;
@@ -158,9 +157,9 @@ const CocktailsDetails = (props) => {
             <Col className="container">
               <Alert className="p-4 m-4 text-center w-100" variant="success">
                 <h2>
-                  Learn about a Cocktails Recipes!
+                  Learn about Cocktails Recipes!
                   <br />
-                  <small>Click on any Ingrident..</small>
+                  <small>Click on any Ingrident ...</small>
                 </h2>
               </Alert>
             </Col>
