@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Row, Col, Accordion, Card, Button, Alert, Media, Badge } from 'react-bootstrap';
+import { Row, Col, Accordion, Card, Button, Alert, Media, Badge, Image } from 'react-bootstrap';
 import {emojify} from 'react-emojione';
 // Redux Actionz
 import { thunk_action_fetch_Cocktails_Details } from "../../redux/actions/fetchAction";
@@ -23,17 +23,31 @@ const CocktailsDetails = (props) => {
     // CockTailCardData = props.data.cocktailsDetails.drinks
     CockTailCardData = CockTailCardDetails.drinks.map((CockTail, index) => (
       // Card Details
-      <Card key={index} className="text-wrap p-2 m-2">
+      <Card key={index} 
+        className="text-wrap p-1 m-1 shadow p-3 mb-5 bg-white rounded">
         <Card.Body>
           <Card.Title className="mb-2 text-muted">
-            <h3> <b>{CockTail.strDrink}</b> </h3>
-            <h5 className="m-0">Category: <small>{CockTail.strCategory}</small></h5>
-            <h5 className="m-0">Drink Type: <small>{CockTail.strAlcoholic}</small></h5>
-            <h5 className="m-0">Glass Type: <small>{CockTail.strGlass}</small></h5>
-            {CockTail.dateModified 
-              ? (<h5 className="m-0">Updated: <small>{CockTail.dateModified}</small></h5>)
-              : (null)
-            }
+            <Row>
+              <Col sm="4" md="2">
+                <Image
+                  width={150}
+                  height={150}
+                  className="mr-3"
+                  src={CockTail.strDrinkThumb}
+                  alt={CockTail.strDrink} 
+                  rounded />
+              </Col>
+              <Col>
+                <h3> <b>{CockTail.strDrink}</b> </h3>
+                <h5 className="m-0">Category: <small>{CockTail.strCategory}</small></h5>
+                <h5 className="m-0">Drink Type: <small>{CockTail.strAlcoholic}</small></h5>
+                <h5 className="m-0">Glass Type: <small>{CockTail.strGlass}</small></h5>
+                {CockTail.dateModified 
+                  ? (<h5 className="m-0">Updated: <small>{CockTail.dateModified}</small></h5>)
+                  : (null)
+                }
+              </Col>
+            </Row>
           </Card.Title>
           <Card.Text>
             {/* Instructions */}
@@ -87,7 +101,7 @@ const CocktailsDetails = (props) => {
                 })
               }
             </Alert>
-            {/* Raw Data */}
+            {/* Raw Data */}           
             <Alert className="p-3" variant="info">
               <h4>Raw Data:</h4>
               {
@@ -110,7 +124,8 @@ const CocktailsDetails = (props) => {
     ))
   } else { 
     CockTailCardData = 
-      <Card className="text-wrap p-2 m-2">
+      <Card 
+        className="text-wrap p-1 m-1 shadow p-3 mb-5 bg-white rounded">
         <Card.Body bg="Success">
           <Card.Text>
             <h3>Loading... {emojify(smiley, emojifyOptions)}</h3>
@@ -136,20 +151,10 @@ const CocktailsDetails = (props) => {
           <Card.Body>
             <Row>
               <Col md={12}>
+                {/* <h3> {CockTail.strDrink} </h3> */}
                 <Media>
-                  <img
-                    width={128}
-                    height={128}
-                    className="mr-3"
-                    src={CockTail.strDrinkThumb}
-                    alt={CockTail.strDrink} />
                   <Media.Body>
-                    {/* <h3> {CockTail.strDrink} </h3> */}
-                    <Media>
-                      <Media.Body>
-                        {CockTailCardData}
-                      </Media.Body>
-                    </Media>
+                    {CockTailCardData}
                   </Media.Body>
                 </Media>
               </Col>
@@ -164,7 +169,7 @@ const CocktailsDetails = (props) => {
     <Row className="m-2">
       {CockTails.drinks ?
         (
-          <Col className="mb-4">
+          <Col className="shadow-sm p-3 mb-5 bg-white rounded">
             <Accordion defaultActiveKey="0">
               {CockTailsCard}
             </Accordion>

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Row, Col, Alert, Accordion, Card, Badge } from 'react-bootstrap';
+import { Row, Col, Alert, Accordion, Card, Badge, Button } from 'react-bootstrap';
 // Alcohol ingredients Info
 const AlchoInfo = (props) => {
   // Format Paragraph to Sentences 
@@ -13,17 +13,19 @@ const AlchoInfo = (props) => {
   }
   // Return AlchoInfo
   return (
-    <Row className="m-2">
+    <Row>
       <Col>
         {props.data.ingredientDetails.ingredients ? 
           (
-            <Accordion defaultActiveKey="1">
+            <Accordion defaultActiveKey="1" className="shadow-sm m-2 p-3 bg-white rounded">
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="0">
-                  <h3>
-                    {props.data.ingredientDetails.ingredients[0].strIngredient}&nbsp;&nbsp;
-                    <small><Badge variant="info"><i>More info</i></Badge></small>
-                  </h3> 
+                  <Button variant="light">
+                    <h3>
+                      {props.data.ingredientDetails.ingredients[0].strIngredient}&nbsp;&nbsp;
+                      <small><Badge variant="info"><i>More info</i></Badge></small>
+                    </h3>
+                  </Button>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
