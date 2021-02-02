@@ -32,7 +32,6 @@ const App = () => {
           <CocktailsDetails />
         </Col>
       </Row>
-      
     </Container>
   );
 }

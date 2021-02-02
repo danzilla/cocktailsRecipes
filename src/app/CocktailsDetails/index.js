@@ -23,8 +23,7 @@ const CocktailsDetails = (props) => {
     // CockTailCardData = props.data.cocktailsDetails.drinks
     CockTailCardData = CockTailCardDetails.drinks.map((CockTail, index) => (
       // Card Details
-      <Card key={index} 
-        className="text-wrap p-1 m-1 shadow p-3 mb-5 bg-white rounded">
+      <Card key={index} className="text-wrap p-1 m-1 shadow p-3 mb-5 bg-white rounded">
         <Card.Body>
           <Card.Title className="mb-2 text-muted">
             <Row>
@@ -164,6 +163,11 @@ const CocktailsDetails = (props) => {
       </Card>
     ));
   } else { console.log("Drink is Not on"); }
+  // Loading message
+  let loadingMsg = "Click on any Ingrident ...";
+  if(props.data.isFetching){
+    loadingMsg = <h1>Almost There, Loading.. {emojify(smiley, emojifyOptions)} </h1>
+  }
   // Render
   return (
     <Row className="m-2">
@@ -180,9 +184,8 @@ const CocktailsDetails = (props) => {
             <Col className="container">
               <Alert className="p-4 m-4 text-center w-100" variant="success">
                 <h2>
-                  Discover Cocktails Recipe!
-                  <br />
-                  <small>Click on any Ingrident ...</small>
+                  Discover Cocktails Recipe! <br />
+                  <small>{loadingMsg}</small>
                 </h2>
               </Alert>
             </Col>
