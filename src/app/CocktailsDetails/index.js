@@ -1,10 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Row, Col, Accordion, Card, Alert, Media } from 'react-bootstrap';
+import { Row, Col, Accordion, Card, Button, Alert, Media, Badge } from 'react-bootstrap';
+import {emojify} from 'react-emojione';
 // Redux Actionz
 import { thunk_action_fetch_Cocktails_Details } from "../../redux/actions/fetchAction";
 // Cocktail Details
 const CocktailsDetails = (props) => {
+  // Random CockTails Icon on every Loaddin~
+  let smileyz = ["🧐", "🥴", "🤠", "😬", "🤗", "😋", "😍", "😇", "😁"]
+  let smiley = smileyz[Math.floor(Math.random() * smileyz.length)]
+  let emojifyOptions = { style: { height: '50' } }
   // onClick on Cocktails for MoreInfo
   // CockTails information => fire action onClick
   const handleClickOnCard = (e) => {
@@ -103,7 +108,16 @@ const CocktailsDetails = (props) => {
         </Card.Body>
       </Card>
     ))
-  } else { CockTailCardData = "Loading..." }
+  } else { 
+    CockTailCardData = 
+      <Card className="text-wrap p-2 m-2">
+        <Card.Body bg="Success">
+          <Card.Text>
+            <h3>Loading... {emojify(smiley, emojifyOptions)}</h3>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+  }
   // CockTails Cards
   let CockTails = props.data.ingredientCocktails;
   let CockTailsCard;
@@ -111,9 +125,12 @@ const CocktailsDetails = (props) => {
     console.log("Drink is on");
     CockTailsCard = CockTails.drinks.map((CockTail, index) => (
       <Card key={index}>
-        <Accordion.Toggle as={Card.Header} eventKey={index + 1}
+        <Accordion.Toggle
+          as={Card.Header} eventKey={index + 1}
           onClick={() => handleClickOnCard(CockTail)}>
-            {CockTail.strDrink} &#11167;
+            <Button variant="light">
+              {CockTail.strDrink} <small><Badge variant="success"><i>learn more</i></Badge></small>
+            </Button> 
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={index + 1}>
           <Card.Body>

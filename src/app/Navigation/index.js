@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button, Nav } from 'react-bootstrap';
 import { connect } from "react-redux";
 // Redux Actionz
 import {
@@ -16,14 +16,20 @@ const Navigation = (props) => {
     // console.log(JSON.stringify(props));
   };
   // Choosen Alcohol list
-  const Alcoholz = ["Whiskey", "Scotch", "Rum", "Tequila", "Brandy"]
+  const Alcoholz = ["Whiskey", "Scotch", "Rum", "Tequila", "Brandy", "Gin"]
   const AlcoholItems = Alcoholz.map((Alcohol, index) => (
-    <Col key={index}>
-      <Button onClick={() => handleClick({ Alcohol })} variant="primary" block> {Alcohol} </Button>
-    </Col>
+    <Nav.Item key={index}>
+      <Nav.Link eventKey={index+1} onClick={() => handleClick({ Alcohol })} >
+        {Alcohol}
+      </Nav.Link>
+    </Nav.Item>
   ));
   // Bling
-  return (<Row className="m-3">{AlcoholItems}</Row>);
+  return (<Row className="mt-4"><Col>
+    <Nav variant="tabs" className="justify-content-center">
+      {AlcoholItems}
+    </Nav>
+  </Col></Row>);
 };
 // Redux connect to store
 const mapStateToProps = state => { return { data: state }; };
